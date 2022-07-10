@@ -6,6 +6,7 @@ clean:
 	@find ./ -name '*.pyc' -exec rm -f {} \;
 	@find ./ -name 'Thumbs.db' -exec rm -f {} \;
 	@find ./ -name '*~' -exec rm -f {} \;
+	@find ./ -name '__pycache__' -exec rm -rf {} \;
 	rm -rf .cache
 	rm -rf build
 	rm -rf dist
@@ -15,5 +16,6 @@ clean:
 	rm -rf docs/_build
 	pip install -e .['dev'] --upgrade --no-cache
 
+
 test:
-	pytest tests/ -v
+	pytest tests/ -v --cov=delivery
