@@ -12,4 +12,12 @@
   <h1>Página inicial do site</h1>
 </body>
 
+	{{name}}
+
+	<ul>
+		{%- for item in items %}
+		<li>{{item}}</li>
+		{%- endfor %}
+	</ul>
+
 </html>
