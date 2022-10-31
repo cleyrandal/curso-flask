@@ -1,6 +1,6 @@
 import click
 from delivery.ext.db import db
-from delivery.ext.site import models # noqa
+from delivery.ext.site import models
 
 
 def init_app(app):
@@ -9,6 +9,20 @@ def init_app(app):
     def create_db():
         """Este comando inicializa o db."""
         db.create_all()
+
+    @app.cli.command()
+    @click.option("--email", "-e")
+    @click.option("--passwd", "-p")
+    @click.option("--admin", "-a", is_flag=True, default=False)
+    def add_user(email, passwd, admin):
+        """adiciona novo usuario"""
+        user = models.User(
+            email=email,
+            passwd=passwd,
+            admin=admin
+        )
+        db.session.add(user)
+        db.session.commit()
 
     @app.cli.command()
     def listar_pedidos():
