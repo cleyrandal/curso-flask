@@ -24,6 +24,8 @@ def init_app(app):
         db.session.add(user)
         db.session.commit()
 
+        click.echo(f"Usuário {email} criado com sucesso!")
+
     @app.cli.command()
     def listar_pedidos():
         # TODO: usar tabulate
