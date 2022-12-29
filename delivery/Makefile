@@ -17,6 +17,9 @@ clean:
 	rm -rf docs/_build
 	pip install -e .['dev'] --upgrade --no-cache
 
+init_db:
+	FLASK_APP=delivery/app.py flask create-db
+	FLASK_APP=delivery/app.py flask db upgrade
 
 test:
 	pytest tests/ -v --cov=delivery
