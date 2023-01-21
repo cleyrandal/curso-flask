@@ -22,4 +22,4 @@ init_db:
 	FLASK_APP=delivery/app.py flask db upgrade
 
 test:
-	pytest tests/ -v --cov=delivery
+	FLASK_DEBUG=False pytest tests/ -v --cov=delivery
