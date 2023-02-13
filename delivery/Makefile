@@ -23,3 +23,13 @@ init_db:
 
 test:
 	FLASK_DEBUG=False pytest tests/ -v --cov=delivery
+
+format:
+	isort **/*.py
+	black -l 79 **/*.py
+
+run:
+	FLASK_APP=delivery/app.py FLASK_ENV=production flask run
+
+run_development:
+	FLASK_APP=delivery/app.py FLASK_ENV=development flask run
